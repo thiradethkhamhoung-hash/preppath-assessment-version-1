@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepPath — Career Assessment</title>
+  <meta name="description" content="A 45-question career assessment matching you to one of 32 career paths.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="brand">
+    <span class="dot"></span>
+    <span>PrepPath</span>
+  </header>
+
+  <!-- ============ WELCOME ============ -->
+  <main id="welcome" class="welcome">
+    <div class="eyebrow">Career Assessment</div>
+    <h1 class="display-1">Find the work that <em>fits you.</em></h1>
+    <p class="lede">A short reflection in two parts. There are no wrong answers — only the ones that feel true to you. We'll match your responses to 32 career paths and surface the three that fit best.</p>
+
+    <div class="meta-row">
+      <div class="meta-item">
+        <div class="label">Questions</div>
+        <div class="value">45</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Time</div>
+        <div class="value">~7 min</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Career paths</div>
+        <div class="value">32</div>
+      </div>
+    </div>
+
+    <button class="btn" id="start-btn">Begin assessment →</button>
+  </main>
+
+  <!-- ============ QUESTION SCREEN ============ -->
+  <main id="question-screen" hidden>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="count"><span id="q-current">1</span><em> / 45</em></span>
+        <span id="q-part">Part 1</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <!-- Live scoring panel -->
+    <div class="live-scores" id="live-scores">
+      <div class="live-scores-header">
+        <span class="live-scores-label">Currently leading</span>
+        <button class="live-scores-toggle" id="live-toggle" type="button" aria-expanded="true">Hide</button>
+      </div>
+      <ol class="live-scores-list" id="live-scores-list">
+        <li><span class="ls-rank">1</span><span class="ls-name">—</span><span class="ls-pts">0</span></li>
+        <li><span class="ls-rank">2</span><span class="ls-name">—</span><span class="ls-pts">0</span></li>
+        <li><span class="ls-rank">3</span><span class="ls-name">—</span><span class="ls-pts">0</span></li>
+      </ol>
+    </div>
+
+    <section class="question-section" id="question-body">
+      <!-- Filled by JS -->
+    </section>
+
+    <div class="nav-row">
+      <button class="btn-ghost btn" id="back-btn">← Back</button>
+      <span id="hint">Pick one to continue</span>
+    </div>
+  </main>
+
+  <!-- ============ RESULTS ============ -->
+  <main id="results" hidden>
+    <div class="results">
+      <div class="results-header">
+        <div class="eyebrow">Your results</div>
+        <h1 class="display-1">Top three <em>matches.</em></h1>
+        <p class="lede">Based on your responses, these career paths align most closely with your interests. Treat them as starting points to explore — not final answers.</p>
+      </div>
+
+      <div id="result-cards"><!-- filled by JS --></div>
+
+      <div class="results-actions">
+        <button class="btn" id="restart-btn">Take it again</button>
+      </div>
+
+      <details class="all-scores">
+        <summary>See all 32 scores</summary>
+        <div class="scores-grid" id="all-scores-grid"></div>
+      </details>
+    </div>
+  </main>
+
+  <footer>PrepPath · Career Assessment v2</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

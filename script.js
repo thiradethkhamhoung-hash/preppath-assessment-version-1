@@ -1,0 +1,412 @@
+/* ============================================================
+   PrepPath Career Assessment
+   ============================================================ */
+
+/* ============================================================
+   ROLES — 32 official career paths across 8 categories
+   ============================================================ */
+const ROLES = {
+  1:  { name: "Medical Doctor / Nursing / GP", category: "Health & Wellbeing" },
+  2:  { name: "Mental Health Specialist", category: "Health & Wellbeing" },
+  3:  { name: "Pharmaceutical & Lab Science", category: "Health & Wellbeing" },
+  4:  { name: "Software & App Developer", category: "Technology & Digital" },
+  5:  { name: "Data & AI Specialist", category: "Technology & Digital" },
+  6:  { name: "Cybersecurity & IT Infrastructure Specialist", category: "Technology & Digital" },
+  7:  { name: "IT Support & Tech Operations", category: "Technology & Digital" },
+  8:  { name: "General Manager / Executive", category: "Business, Strategy & Operations" },
+  9:  { name: "Business Analyst / Strategy Consultant", category: "Business, Strategy & Operations" },
+  10: { name: "Human Resources & People Operations", category: "Business, Strategy & Operations" },
+  11: { name: "Supply Chain & Logistics Manager", category: "Business, Strategy & Operations" },
+  12: { name: "Accountant / Auditor", category: "Finance, Legal & Policy" },
+  13: { name: "Finance Analyst / Banking Professional", category: "Finance, Legal & Policy" },
+  14: { name: "Lawyer / Legal Professional", category: "Finance, Legal & Policy" },
+  15: { name: "Policy, Government & Regulatory Officer", category: "Finance, Legal & Policy" },
+  16: { name: "Teacher / Educator / University Faculty", category: "Education & Knowledge" },
+  17: { name: "Career Coach / Student Advisor", category: "Education & Knowledge" },
+  18: { name: "Interpreter / Multilingual Specialist", category: "Education & Knowledge" },
+  19: { name: "Creative Media & Content Professional", category: "Creative, Communication & Design" },
+  20: { name: "Marketing & Communications Manager", category: "Creative, Communication & Design" },
+  21: { name: "Visual & Design Specialist", category: "Creative, Communication & Design" },
+  22: { name: "Chef / Culinary Professional", category: "Catering, Services & Hospitality" },
+  23: { name: "Hospitality & Events Manager", category: "Catering, Services & Hospitality" },
+  24: { name: "Hair, Beauty & Wellness Professional", category: "Catering, Services & Hospitality" },
+  25: { name: "Infrastructure & Civil Systems Engineer", category: "Engineering & Physical Systems" },
+  26: { name: "Mechanical, Electrical & Manufacturing Engineer", category: "Engineering & Physical Systems" },
+  27: { name: "Environmental & Energy Systems Engineer", category: "Engineering & Physical Systems" },
+  28: { name: "Skilled Trades Technician", category: "Engineering & Physical Systems" },
+  29: { name: "Emergency & Protective Services Officer", category: "Public Services & Impact" },
+  30: { name: "NGO / International Development Officer", category: "Public Services & Impact" },
+  31: { name: "Agriculture & Animal Care Professional", category: "Public Services & Impact" },
+  32: { name: "Entrepreneur / Startup Founder", category: "Public Services & Impact" }
+};
+
+/* ============================================================
+   PART 1 — 40 core questions
+   Each Likely answer awards +1 to every linked role.
+   See README for label→role mapping assumptions.
+   ============================================================ */
+const PART1 = [
+  { id: 1,  text: "Do you find fulfillment in helping people improve their physical health?", roles: [1, 2, 17, 30] },
+  { id: 2,  text: "Do you enjoy solving problems using software or digital tools?", roles: [4, 5, 7, 9] },
+  { id: 3,  text: "Do you want a career with direct impact on global or social change?", roles: [30, 15, 2, 32] },
+  { id: 4,  text: "Do you enjoy leading teams or organizations toward ambitious goals?", roles: [8, 32, 9, 10] },
+  { id: 5,  text: "Are you interested in how laws and regulations shape business or society?", roles: [14, 15, 8] },
+  { id: 6,  text: "Would you enjoy designing physical products or machines?", roles: [26, 28, 21, 32] },
+  { id: 7,  text: "Do you enjoy building relationships with customers or clients?", roles: [20, 23, 32, 17] },
+  { id: 8,  text: "Do you want to help people through science or research?", roles: [16, 3, 27, 5] },
+  { id: 9,  text: "Are you excited by fast-paced, data-driven environments like finance?", roles: [13, 12, 5, 9] },
+  { id: 10, text: "Do you enjoy teaching or mentoring others to help them grow?", roles: [16, 17, 10] },
+  { id: 11, text: "Are you energized by coming up with creative content or media ideas?", roles: [19, 21] },
+  { id: 12, text: "Would you enjoy analyzing supply chains or logistics operations?", roles: [11, 9, 5, 7] },
+  { id: 13, text: "Do you like working with your hands to fix or build things?", roles: [28, 22, 25, 7] },
+  { id: 14, text: "Are you drawn to working in emergency or high-pressure situations?", roles: [29, 30, 1] },
+  { id: 15, text: "Do you enjoy managing people, teams, or HR processes?", roles: [10, 8, 9, 16] },
+  { id: 16, text: "Would you enjoy writing content, editing, or crafting messages?", roles: [19, 20, 15] },
+  { id: 17, text: "Are you interested in understanding what motivates people in the workplace?", roles: [10, 17, 2, 9] },
+  { id: 18, text: "Do you enjoy supporting others through advice, coaching, or guidance?", roles: [17, 16, 30] },
+  { id: 19, text: "Are you passionate about sustainability, climate, or clean energy?", roles: [27, 30, 15, 32] },
+  { id: 20, text: "Do you prefer structured tasks and stable environments?", roles: [12, 7, 25, 16] },
+  { id: 21, text: "Do you like using logic and rules to solve technical issues?", roles: [4, 6, 7, 26] },
+  { id: 22, text: "Are you interested in beauty, wellness, or self-care industries?", roles: [24, 2, 23] },
+  { id: 23, text: "Do you enjoy preparing meals or managing a kitchen?", roles: [22, 23, 32] },
+  { id: 24, text: "Would you thrive in a hospital, clinic, or lab environment?", roles: [1, 3, 29] },
+  { id: 25, text: "Do you enjoy managing resources, budgets, or logistics?", roles: [11, 12, 8, 23] },
+  { id: 26, text: "Do you enjoy exploring new technologies like AI or machine learning?", roles: [5, 4, 32] },
+  { id: 27, text: "Are you interested in languages and cross-cultural communication?", roles: [18, 15, 19, 16] },
+  { id: 28, text: "Do you like hosting events or managing guest experiences?", roles: [23, 20, 32] },
+  { id: 29, text: "Would you enjoy constructing infrastructure like bridges or buildings?", roles: [25, 28, 21] },
+  { id: 30, text: "Are you interested in how governments create and apply public policy?", roles: [15, 14, 13, 30] },
+  { id: 31, text: "Do you enjoy designing user-friendly products, interfaces, or visuals?", roles: [21, 20, 26] },
+  { id: 32, text: "Would you enjoy traveling or working in multicultural environments?", roles: [30, 18, 32, 15] },
+  { id: 33, text: "Do you like working in calm, organized environments like offices or labs?", roles: [12, 7, 3, 16] },
+  { id: 34, text: "Would you enjoy exploring biology, chemistry, or medical testing?", roles: [3, 1, 27] },
+  { id: 35, text: "Do you enjoy making strategic decisions that affect businesses or systems?", roles: [8, 9, 13] },
+  { id: 36, text: "Are you passionate about improving education systems or learning methods?", roles: [16, 15, 17] },
+  { id: 37, text: "Would you like to start your own business or launch an idea?", roles: [32, 20, 4, 9] },
+  { id: 38, text: "Are you interested in analyzing risks and ethical dilemmas?", roles: [14, 12, 15, 13] },
+  { id: 39, text: "Do you enjoy helping others navigate education or career decisions?", roles: [17, 16, 2] },
+  { id: 40, text: "Would you like to design, plan, or develop energy or environmental systems?", roles: [27, 30, 25] }
+];
+
+/* ============================================================
+   PART 2 — 5 bonus role-sorting questions
+   User picks one option, +1 to that role.
+   ============================================================ */
+const PART2 = [
+  {
+    id: 41,
+    text: "Which environment feels most natural to you?",
+    options: [
+      { text: "Laboratory or research space", role: 3 },
+      { text: "Government or public office", role: 15 },
+      { text: "Classroom or campus", role: 16 },
+      { text: "Startup or tech hub", role: 32 }
+    ]
+  },
+  {
+    id: 42,
+    text: "What kind of problem would you most enjoy solving?",
+    options: [
+      { text: "How to treat or care for a patient", role: 1 },
+      { text: "How to prevent a cyberattack", role: 6 },
+      { text: "How to make a brand go viral", role: 20 },
+      { text: "How to design an energy-efficient building", role: 27 }
+    ]
+  },
+  {
+    id: 43,
+    text: "Which of these would you enjoy managing most?",
+    options: [
+      { text: "A hotel or event space", role: 23 },
+      { text: "A classroom full of learners", role: 17 },
+      { text: "A logistics and delivery operation", role: 11 },
+      { text: "A construction or infrastructure site", role: 25 }
+    ]
+  },
+  {
+    id: 44,
+    text: "Which activity sounds most enjoyable?",
+    options: [
+      { text: "Writing articles or editing content", role: 19 },
+      { text: "Filming content or managing a media channel", role: 19 },
+      { text: "Drawing, designing, or prototyping visuals", role: 21 },
+      { text: "Managing a creative team or campaign", role: 20 }
+    ]
+  },
+  {
+    id: 45,
+    text: "Which hands-on task appeals to you most?",
+    options: [
+      { text: "Repairing or installing machinery", role: 28 },
+      { text: "Preparing a gourmet meal", role: 22 },
+      { text: "Giving a wellness or beauty treatment", role: 24 },
+      { text: "Caring for animals or crops", role: 31 }
+    ]
+  }
+];
+
+const LIKERT = [
+  { value: "likely",     label: "Likely",     points: 1 },
+  { value: "neutral",    label: "Neutral",    points: 0 },
+  { value: "not_likely", label: "Not Likely", points: 0 }
+];
+
+const TOTAL_QUESTIONS = PART1.length + PART2.length; // 45
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const state = {
+  index: 0,
+  answers: new Array(TOTAL_QUESTIONS).fill(null),
+  // Track the previous top-3 IDs so we can flash rows that changed
+  prevTopIds: [null, null, null]
+};
+
+/* ============================================================
+   DOM
+   ============================================================ */
+const $ = id => document.getElementById(id);
+const welcome     = $("welcome");
+const qScreen     = $("question-screen");
+const results     = $("results");
+const qBody       = $("question-body");
+const qCurrent    = $("q-current");
+const qPart       = $("q-part");
+const progFill    = $("progress-fill");
+const backBtn     = $("back-btn");
+const hint        = $("hint");
+const liveScores  = $("live-scores");
+const liveList    = $("live-scores-list");
+const liveToggle  = $("live-toggle");
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+
+$("start-btn").addEventListener("click", () => {
+  welcome.hidden = true;
+  qScreen.hidden = false;
+  renderQuestion();
+  renderLiveScores();
+});
+
+$("restart-btn").addEventListener("click", () => {
+  state.index = 0;
+  state.answers = new Array(TOTAL_QUESTIONS).fill(null);
+  state.prevTopIds = [null, null, null];
+  results.hidden = true;
+  qScreen.hidden = false;
+  renderQuestion();
+  renderLiveScores();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+backBtn.addEventListener("click", () => {
+  if (state.index > 0) {
+    state.index--;
+    renderQuestion();
+  }
+});
+
+liveToggle.addEventListener("click", () => {
+  const collapsed = liveScores.classList.toggle("collapsed");
+  liveToggle.textContent = collapsed ? "Show" : "Hide";
+  liveToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+});
+
+function renderQuestion() {
+  const i = state.index;
+  const isPart1 = i < PART1.length;
+  const q = isPart1 ? PART1[i] : PART2[i - PART1.length];
+
+  // progress
+  qCurrent.textContent = i + 1;
+  qPart.textContent = isPart1 ? "Part 1 · Self-reflection" : "Part 2 · Pick one";
+  progFill.style.width = (i / TOTAL_QUESTIONS * 100) + "%";
+
+  backBtn.disabled = i === 0;
+
+  // body
+  qBody.innerHTML = "";
+  qBody.style.animation = "none";
+  qBody.offsetHeight; // force reflow to restart animation
+  qBody.style.animation = "";
+
+  const partLabel = document.createElement("div");
+  partLabel.className = "part-label";
+  partLabel.textContent = isPart1 ? "How likely is this for you?" : "Pick the one that fits best";
+  qBody.appendChild(partLabel);
+
+  const qText = document.createElement("h2");
+  qText.className = "question-text";
+  qText.textContent = q.text;
+  qBody.appendChild(qText);
+
+  const opts = document.createElement("div");
+  opts.className = "options" + (isPart1 ? " likert" : "");
+  qBody.appendChild(opts);
+
+  const currentAnswer = state.answers[i];
+
+  if (isPart1) {
+    LIKERT.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "option" + (currentAnswer === opt.value ? " selected" : "");
+      btn.innerHTML = `<span class="marker"></span><span>${opt.label}</span>`;
+      btn.addEventListener("click", () => {
+        state.answers[i] = opt.value;
+        advance();
+      });
+      opts.appendChild(btn);
+    });
+  } else {
+    q.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "option" + (currentAnswer === opt.role ? " selected" : "");
+      btn.innerHTML = `<span class="marker"></span><span>${opt.text}</span>`;
+      btn.addEventListener("click", () => {
+        state.answers[i] = opt.role;
+        advance();
+      });
+      opts.appendChild(btn);
+    });
+  }
+
+  hint.textContent = currentAnswer !== null
+    ? "Pick again to change · or wait for the next question"
+    : "Pick one to continue";
+}
+
+function advance() {
+  // recompute and update live scores immediately
+  renderLiveScores();
+
+  // brief visual confirmation, then move on
+  setTimeout(() => {
+    if (state.index < TOTAL_QUESTIONS - 1) {
+      state.index++;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      finish();
+    }
+  }, 280);
+  // immediate visual update of selection
+  renderQuestion();
+}
+
+/* ============================================================
+   SCORING
+   ============================================================ */
+
+function computeScores() {
+  const scores = {};
+  for (let id = 1; id <= 32; id++) scores[id] = 0;
+
+  // Part 1 — "Likely" = +1 to every linked role
+  PART1.forEach((q, i) => {
+    if (state.answers[i] === "likely") {
+      q.roles.forEach(r => { scores[r] += 1; });
+    }
+  });
+
+  // Part 2 — picked option's role gets +1
+  PART2.forEach((q, j) => {
+    const idx = PART1.length + j;
+    const ans = state.answers[idx];
+    if (typeof ans === "number") {
+      scores[ans] += 1;
+    }
+  });
+
+  return scores;
+}
+
+function rankScores(scores) {
+  return Object.entries(scores)
+    .map(([id, pts]) => ({ id: Number(id), pts, ...ROLES[id] }))
+    .sort((a, b) => {
+      // tiebreak by lower role id so order is stable
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      return a.id - b.id;
+    });
+}
+
+function renderLiveScores() {
+  const scores = computeScores();
+  const ranked = rankScores(scores);
+  const top3 = ranked.slice(0, 3);
+
+  // If all scores are 0, show placeholders
+  const anyAnswered = state.answers.some(a => a !== null);
+
+  const rows = liveList.querySelectorAll("li");
+  rows.forEach((li, idx) => {
+    const role = top3[idx];
+    const nameEl = li.querySelector(".ls-name");
+    const ptsEl = li.querySelector(".ls-pts");
+
+    if (!anyAnswered || !role || role.pts === 0) {
+      nameEl.textContent = "—";
+      nameEl.classList.add("empty");
+      ptsEl.textContent = "0";
+      return;
+    }
+
+    nameEl.classList.remove("empty");
+    nameEl.textContent = role.name;
+    ptsEl.textContent = role.pts;
+
+    // Flash row if the role at this rank changed since last update
+    const prevId = state.prevTopIds[idx];
+    if (prevId !== null && prevId !== role.id) {
+      li.classList.remove("updated");
+      void li.offsetWidth; // restart animation
+      li.classList.add("updated");
+    }
+  });
+
+  // Save current top-3 IDs for next comparison
+  state.prevTopIds = top3.map(r => (r && r.pts > 0) ? r.id : null);
+}
+
+/* ============================================================
+   RESULTS SCREEN
+   ============================================================ */
+
+function finish() {
+  const scores = computeScores();
+  const ranked = rankScores(scores);
+  const top3 = ranked.slice(0, 3);
+
+  const cards = $("result-cards");
+  cards.innerHTML = "";
+
+  top3.forEach((r, idx) => {
+    const card = document.createElement("article");
+    card.className = "result-card";
+    card.innerHTML = `
+      <div class="rank">${idx + 1}</div>
+      <div class="category">${r.category}</div>
+      <h3 class="role-name">${r.name}</h3>
+      <span class="score"><strong>${r.pts}</strong> point${r.pts === 1 ? "" : "s"}</span>
+    `;
+    cards.appendChild(card);
+  });
+
+  // Full breakdown
+  const grid = $("all-scores-grid");
+  grid.innerHTML = "";
+  ranked.forEach(r => {
+    const row = document.createElement("div");
+    row.className = "score-row";
+    row.innerHTML = `<span>${r.name}</span><span class="pts">${r.pts}</span>`;
+    grid.appendChild(row);
+  });
+
+  qScreen.hidden = true;
+  results.hidden = false;
+  progFill.style.width = "100%";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
