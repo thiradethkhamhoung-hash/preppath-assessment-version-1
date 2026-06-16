@@ -46,46 +46,46 @@ const ROLES = {
    See README for label→role mapping assumptions.
    ============================================================ */
 const PART1 = [
-  { id: 1,  text: "Do you find fulfillment in helping people improve their physical health?", roles: [1, 2, 17, 30] },
-  { id: 2,  text: "Do you enjoy solving problems using software or digital tools?", roles: [4, 5, 7, 9] },
-  { id: 3,  text: "Do you want a career with direct impact on global or social change?", roles: [30, 15, 2, 32] },
-  { id: 4,  text: "Do you enjoy leading teams or organizations toward ambitious goals?", roles: [8, 32, 9, 10] },
-  { id: 5,  text: "Are you interested in how laws and regulations shape business or society?", roles: [14, 15, 8] },
-  { id: 6,  text: "Would you enjoy designing physical products or machines?", roles: [26, 28, 21, 32] },
-  { id: 7,  text: "Do you enjoy building relationships with customers or clients?", roles: [20, 23, 32, 17] },
+  { id: 1,  text: "Do you enjoy helping people get healthier?", roles: [1, 2, 17, 30] },
+  { id: 2,  text: "Do you enjoy solving problems with software or computers?", roles: [4, 5, 7, 9] },
+  { id: 3,  text: "Do you want a job that helps people or changes the world?", roles: [30, 15, 2, 32] },
+  { id: 4,  text: "Do you enjoy leading teams to reach big goals?", roles: [8, 32, 9, 10] },
+  { id: 5,  text: "Are you interested in how laws affect business and people?", roles: [14, 15, 8] },
+  { id: 6,  text: "Would you enjoy designing products or machines?", roles: [26, 28, 21, 32] },
+  { id: 7,  text: "Do you enjoy working closely with customers or clients?", roles: [20, 23, 32, 17] },
   { id: 8,  text: "Do you want to help people through science or research?", roles: [16, 3, 27, 5] },
-  { id: 9,  text: "Are you excited by fast-paced, data-driven environments like finance?", roles: [13, 12, 5, 9] },
-  { id: 10, text: "Do you enjoy teaching or mentoring others to help them grow?", roles: [16, 17, 10] },
-  { id: 11, text: "Are you energized by coming up with creative content or media ideas?", roles: [19, 21] },
-  { id: 12, text: "Would you enjoy analyzing supply chains or logistics operations?", roles: [11, 9, 5, 7] },
+  { id: 9,  text: "Do you like working with numbers and data, like in banks or finance?", roles: [13, 12, 5, 9] },
+  { id: 10, text: "Do you enjoy teaching or guiding others?", roles: [16, 17, 10] },
+  { id: 11, text: "Do you love creating new ideas for content, videos, or media?", roles: [19, 21] },
+  { id: 12, text: "Would you enjoy planning how products move from one place to another?", roles: [11, 9, 5, 7] },
   { id: 13, text: "Do you like working with your hands to fix or build things?", roles: [28, 22, 25, 7] },
-  { id: 14, text: "Are you drawn to working in emergency or high-pressure situations?", roles: [29, 30, 1] },
-  { id: 15, text: "Do you enjoy managing people, teams, or HR processes?", roles: [10, 8, 9, 16] },
-  { id: 16, text: "Would you enjoy writing content, editing, or crafting messages?", roles: [19, 20, 15] },
-  { id: 17, text: "Are you interested in understanding what motivates people in the workplace?", roles: [10, 17, 2, 9] },
-  { id: 18, text: "Do you enjoy supporting others through advice, coaching, or guidance?", roles: [17, 16, 30] },
-  { id: 19, text: "Are you passionate about sustainability, climate, or clean energy?", roles: [27, 30, 15, 32] },
-  { id: 20, text: "Do you prefer structured tasks and stable environments?", roles: [12, 7, 25, 16] },
-  { id: 21, text: "Do you like using logic and rules to solve technical issues?", roles: [4, 6, 7, 26] },
-  { id: 22, text: "Are you interested in beauty, wellness, or self-care industries?", roles: [24, 2, 23] },
-  { id: 23, text: "Do you enjoy preparing meals or managing a kitchen?", roles: [22, 23, 32] },
-  { id: 24, text: "Would you thrive in a hospital, clinic, or lab environment?", roles: [1, 3, 29] },
-  { id: 25, text: "Do you enjoy managing resources, budgets, or logistics?", roles: [11, 12, 8, 23] },
-  { id: 26, text: "Do you enjoy exploring new technologies like AI or machine learning?", roles: [5, 4, 32] },
-  { id: 27, text: "Are you interested in languages and cross-cultural communication?", roles: [18, 15, 19, 16] },
-  { id: 28, text: "Do you like hosting events or managing guest experiences?", roles: [23, 20, 32] },
-  { id: 29, text: "Would you enjoy constructing infrastructure like bridges or buildings?", roles: [25, 28, 21] },
-  { id: 30, text: "Are you interested in how governments create and apply public policy?", roles: [15, 14, 13, 30] },
-  { id: 31, text: "Do you enjoy designing user-friendly products, interfaces, or visuals?", roles: [21, 20, 26] },
-  { id: 32, text: "Would you enjoy traveling or working in multicultural environments?", roles: [30, 18, 32, 15] },
-  { id: 33, text: "Do you like working in calm, organized environments like offices or labs?", roles: [12, 7, 3, 16] },
-  { id: 34, text: "Would you enjoy exploring biology, chemistry, or medical testing?", roles: [3, 1, 27] },
-  { id: 35, text: "Do you enjoy making strategic decisions that affect businesses or systems?", roles: [8, 9, 13] },
-  { id: 36, text: "Are you passionate about improving education systems or learning methods?", roles: [16, 15, 17] },
-  { id: 37, text: "Would you like to start your own business or launch an idea?", roles: [32, 20, 4, 9] },
-  { id: 38, text: "Are you interested in analyzing risks and ethical dilemmas?", roles: [14, 12, 15, 13] },
-  { id: 39, text: "Do you enjoy helping others navigate education or career decisions?", roles: [17, 16, 2] },
-  { id: 40, text: "Would you like to design, plan, or develop energy or environmental systems?", roles: [27, 30, 25] }
+  { id: 14, text: "Do you like working in emergencies or stressful situations?", roles: [29, 30, 1] },
+  { id: 15, text: "Do you enjoy managing people or teams at work?", roles: [10, 8, 9, 16] },
+  { id: 16, text: "Would you enjoy writing or editing content?", roles: [19, 20, 15] },
+  { id: 17, text: "Are you interested in what makes people work better?", roles: [10, 17, 2, 9] },
+  { id: 18, text: "Do you enjoy giving advice and supporting others?", roles: [17, 16, 30] },
+  { id: 19, text: "Do you care strongly about the environment or clean energy?", roles: [27, 30, 15, 32] },
+  { id: 20, text: "Do you prefer clear tasks and a steady routine?", roles: [12, 7, 25, 16] },
+  { id: 21, text: "Do you like using logic and rules to fix technical problems?", roles: [4, 6, 7, 26] },
+  { id: 22, text: "Are you interested in beauty, wellness, or self-care?", roles: [24, 2, 23] },
+  { id: 23, text: "Do you enjoy cooking or running a kitchen?", roles: [22, 23, 32] },
+  { id: 24, text: "Would you enjoy working in a hospital, clinic, or lab?", roles: [1, 3, 29] },
+  { id: 25, text: "Do you enjoy managing money, supplies, or schedules?", roles: [11, 12, 8, 23] },
+  { id: 26, text: "Do you enjoy learning about new technologies like AI?", roles: [5, 4, 32] },
+  { id: 27, text: "Do you enjoy learning languages and talking with people from other cultures?", roles: [18, 15, 19, 16] },
+  { id: 28, text: "Do you like organizing events or taking care of guests?", roles: [23, 20, 32] },
+  { id: 29, text: "Would you enjoy building things like bridges or buildings?", roles: [25, 28, 21] },
+  { id: 30, text: "Are you interested in how governments make decisions for the country?", roles: [15, 14, 13, 30] },
+  { id: 31, text: "Do you enjoy designing easy-to-use products, apps, or visuals?", roles: [21, 20, 26] },
+  { id: 32, text: "Would you enjoy traveling or working with people from many cultures?", roles: [30, 18, 32, 15] },
+  { id: 33, text: "Do you like working in quiet, organized places like offices or labs?", roles: [12, 7, 3, 16] },
+  { id: 34, text: "Would you enjoy studying biology, chemistry, or medical tests?", roles: [3, 1, 27] },
+  { id: 35, text: "Do you enjoy making important decisions for businesses or teams?", roles: [8, 9, 13] },
+  { id: 36, text: "Do you want to make schools and learning better?", roles: [16, 15, 17] },
+  { id: 37, text: "Would you like to start your own business?", roles: [32, 20, 4, 9] },
+  { id: 38, text: "Are you interested in studying risks and difficult choices about what is right or wrong?", roles: [14, 12, 15, 13] },
+  { id: 39, text: "Do you enjoy helping others choose their studies or career?", roles: [17, 16, 2] },
+  { id: 40, text: "Would you like to design or plan energy and environment projects?", roles: [27, 30, 25] }
 ];
 
 /* ============================================================
@@ -95,12 +95,12 @@ const PART1 = [
 const PART2 = [
   {
     id: 41,
-    text: "Which environment feels most natural to you?",
+    text: "Which place feels most comfortable to you?",
     options: [
-      { text: "Laboratory or research space", role: 3 },
-      { text: "Government or public office", role: 15 },
-      { text: "Classroom or campus", role: 16 },
-      { text: "Startup or tech hub", role: 32 }
+      { text: "A laboratory or research room", role: 3 },
+      { text: "A government or public office", role: 15 },
+      { text: "A classroom or school", role: 16 },
+      { text: "A startup or tech company", role: 32 }
     ]
   },
   {
@@ -108,39 +108,39 @@ const PART2 = [
     text: "What kind of problem would you most enjoy solving?",
     options: [
       { text: "How to treat or care for a patient", role: 1 },
-      { text: "How to prevent a cyberattack", role: 6 },
-      { text: "How to make a brand go viral", role: 20 },
-      { text: "How to design an energy-efficient building", role: 27 }
+      { text: "How to stop a cyberattack", role: 6 },
+      { text: "How to make a brand popular", role: 20 },
+      { text: "How to design a building that saves energy", role: 27 }
     ]
   },
   {
     id: 43,
     text: "Which of these would you enjoy managing most?",
     options: [
-      { text: "A hotel or event space", role: 23 },
-      { text: "A classroom full of learners", role: 17 },
-      { text: "A logistics and delivery operation", role: 11 },
-      { text: "A construction or infrastructure site", role: 25 }
+      { text: "A hotel or event place", role: 23 },
+      { text: "A classroom of students", role: 17 },
+      { text: "A delivery and shipping business", role: 11 },
+      { text: "A construction site", role: 25 }
     ]
   },
   {
     id: 44,
-    text: "Which activity sounds most enjoyable?",
+    text: "Which activity sounds most fun to you?",
     options: [
       { text: "Writing articles or editing content", role: 19 },
-      { text: "Filming content or managing a media channel", role: 19 },
-      { text: "Drawing, designing, or prototyping visuals", role: 21 },
-      { text: "Managing a creative team or campaign", role: 20 }
+      { text: "Filming videos or running a media channel", role: 19 },
+      { text: "Drawing, designing, or creating visuals", role: 21 },
+      { text: "Leading a creative team or project", role: 20 }
     ]
   },
   {
     id: 45,
-    text: "Which hands-on task appeals to you most?",
+    text: "Which practical activity do you like best?",
     options: [
-      { text: "Repairing or installing machinery", role: 28 },
-      { text: "Preparing a gourmet meal", role: 22 },
-      { text: "Giving a wellness or beauty treatment", role: 24 },
-      { text: "Caring for animals or crops", role: 31 }
+      { text: "Fixing or installing machines", role: 28 },
+      { text: "Cooking a special meal", role: 22 },
+      { text: "Giving a beauty or wellness treatment", role: 24 },
+      { text: "Taking care of animals or crops", role: 31 }
     ]
   }
 ];
